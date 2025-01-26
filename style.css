@@ -21,7 +21,7 @@ nav {
     border-bottom: 1px solid #333;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .logo {
@@ -119,10 +119,14 @@ header {
     justify-content: center;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url('https://source.unsplash.com/random/1920x1080/?technology') center/cover;
+    position: relative;
+    z-index: 1;
 }
 
 .hero {
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
@@ -614,7 +618,7 @@ footer {
     }
 }
 
-/* Modal Styles - Updated */
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -623,10 +627,10 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
-    z-index: 1000;
+    z-index: 9999;
     backdrop-filter: blur(8px);
     overflow-y: auto;
-    padding: 1rem;
+    padding: 2rem 0;
 }
 
 .modal-content {
@@ -634,10 +638,9 @@ footer {
     margin: 2rem auto;
     max-width: 600px;
     width: 90%;
-    transform: none;
     background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
     border-radius: 25px;
-    padding: 1rem;
+    padding: 2rem;
     box-shadow: 0 0 50px rgba(0, 255, 255, 0.1);
 }
 
