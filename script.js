@@ -90,32 +90,102 @@ menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
 });
 
+// Ödeme işlemleri
+const paymentBtn = document.getElementById('paymentBtn');
+const paymentModal = document.getElementById('paymentModal');
+const confirmModal = document.getElementById('confirmModal');
+const paymentDetailsModal = document.getElementById('paymentDetailsModal');
+const paymentOptions = document.querySelectorAll('.payment-option');
+const confirmYes = document.getElementById('confirmYes');
+const confirmNo = document.getElementById('confirmNo');
+let selectedPaymentMethod = '';
+
+// Hemen Öde butonuna tıklandığında
+paymentBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    paymentModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+});
+
+// Ödeme seçeneklerine tıklandığında
+paymentOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        selectedPaymentMethod = option.dataset.method;
+        paymentModal.style.display = 'none';
+        confirmModal.style.display = 'block';
+    });
+});
+
+// Onay butonları
+confirmYes.addEventListener('click', () => {
+    confirmModal.style.display = 'none';
+    paymentDetailsModal.style.display = 'block';
+    
+    // İlgili ödeme detayını göster
+    document.querySelectorAll('.payment-detail-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    document.getElementById(`${selectedPaymentMethod}Details`).style.display = 'block';
+});
+
+confirmNo.addEventListener('click', () => {
+    confirmModal.style.display = 'none';
+    paymentModal.style.display = 'block';
+});
+
+// Kopyalama işlevi
+document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const input = btn.previousElementSibling;
+        input.select();
+        document.execCommand('copy');
+        
+        // Kopyalandı bildirimi
+        const originalText = btn.textContent;
+        btn.textContent = 'Kopyalandı!';
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 2000);
+    });
+});
+
 // Modal Kontrolü
-const modal = document.getElementById('urunModal');
-const kesfetBtn = document.getElementById('kesfetBtn');
-const closeModal = document.querySelector('.close-modal');
+const urunModal = document.getElementById('urunModal');
+const urunModalBtn = document.getElementById('urunModal-btn');
+const closeButtons = document.querySelectorAll('.close-modal');
 
-kesfetBtn.addEventListener('click', () => {
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Scroll'u devre dışı bırak
+// Ürün modal butonuna tıklandığında
+urunModalBtn.addEventListener('click', () => {
+    urunModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 });
 
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Scroll'u tekrar etkinleştir
+// Tüm close butonları için kapatma işlevi
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        urunModal.style.display = 'none';
+        paymentModal.style.display = 'none';
+        confirmModal.style.display = 'none';
+        paymentDetailsModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
 });
 
+// Modal dışına tıklandığında
 window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    if (e.target === urunModal) {
+        urunModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 });
 
 // Escape tuşu ile modalı kapatma
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === 'block') {
-        modal.style.display = 'none';
+    if (e.key === 'Escape') {
+        urunModal.style.display = 'none';
+        paymentModal.style.display = 'none';
+        confirmModal.style.display = 'none';
+        paymentDetailsModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 });

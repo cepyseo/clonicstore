@@ -34,7 +34,7 @@
             <div class="glitch" data-text="Geleceğin Teknolojisi">Geleceğin Teknolojisi</div>
             <p class="subtitle">Yenilikçi çözümler, modern yaklaşımlar</p>
             <div class="cta-container">
-                <button class="cta-button" id="kesfetBtn">
+                <button class="cta-button" id="urunModal-btn">
                     <div class="button-wrapper">
                         <span class="button-text">Aylık Business Plan Satın Al</span>
                         <div class="button-icon">
@@ -238,11 +238,9 @@
                     <span>Sayısız Referans İle Satışta</span>
                 </div>
 
-                <a href="https://www.itemsatis.com/yazilim-bot-satislari/cursor-ai-aylik-profesyonel-business-plan-3462643.html" 
-                   target="_blank" 
-                   class="buy-button">
+                <a href="#" class="buy-button" id="paymentBtn">
                     <div class="button-content">
-                        <span>HEMEN SATIN AL</span>
+                        <span>HEMEN ÖDE</span>
                         <svg viewBox="0 0 24 24" width="24" height="24">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -255,6 +253,96 @@
                         <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
                     </svg>
                     <span>30 Gün İade Garantisi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ödeme Modal -->
+    <div id="paymentModal" class="modal payment-modal">
+        <div class="modal-content payment-content">
+            <span class="close-modal">&times;</span>
+            
+            <div class="warning-message">
+                <div class="warning-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 2L2 22h20L12 2zm0 8v6m0 2v2"/>
+                    </svg>
+                </div>
+                <p>Ödemeyi yapmadan önce Lütfen Telegram adresi üzerinden Satıcı ile iletişime geçiniz!</p>
+                <a href="https://t.me/Cepyseo" target="_blank" class="contact-button">
+                    İletişime geçmek için tıklayınız!
+                </a>
+            </div>
+
+            <div class="payment-methods">
+                <button class="payment-option" data-method="itemsatis">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M3 3h18v18H3zM12 8v8M8 12h8"/>
+                    </svg>
+                    <span>ITEMSATIŞ ile Öde</span>
+                </button>
+                
+                <button class="payment-option" data-method="papara">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M2 8v8M6 8v8m4-8v8"/>
+                    </svg>
+                    <span>PAPARA ile Öde</span>
+                </button>
+                
+                <button class="payment-option" data-method="iban">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M4 10V4h16v6M4 10h16M4 10v10M20 10v10M4 20h16"/>
+                    </svg>
+                    <span>IBAN ile Öde</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onay Modal -->
+    <div id="confirmModal" class="modal confirm-modal">
+        <div class="modal-content confirm-content">
+            <span class="close-modal">&times;</span>
+            <h3>Onaylıyor musunuz?</h3>
+            <div class="confirm-buttons">
+                <button id="confirmYes" class="confirm-btn yes">Evet</button>
+                <button id="confirmNo" class="confirm-btn no">Hayır</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ödeme Detay Modal -->
+    <div id="paymentDetailsModal" class="modal details-modal">
+        <div class="modal-content details-content">
+            <span class="close-modal">&times;</span>
+            <div class="payment-details">
+                <div id="itemsatisDetails" class="payment-detail-content">
+                    <h3>ITEMSATIŞ Ödeme Linki</h3>
+                    <a href="https://www.itemsatis.com/yazilim-bot-satislari/cursor-ai-aylik-profesyonel-business-plan-3462643.html" 
+                       target="_blank" 
+                       class="payment-link">
+                        Ödeme Yapmak İçin Tıklayınız
+                    </a>
+                </div>
+                
+                <div id="paparaDetails" class="payment-detail-content">
+                    <h3>PAPARA Numarası</h3>
+                    <div class="copy-field">
+                        <input type="text" value="1199741617" readonly>
+                        <button class="copy-btn">Kopyala</button>
+                    </div>
+                </div>
+                
+                <div id="ibanDetails" class="payment-detail-content">
+                    <h3>Banka Bilgileri</h3>
+                    <div class="bank-details">
+                        <p><strong>Ad Soyad:</strong> Tolga Öztürk</p>
+                        <div class="copy-field">
+                            <input type="text" value="TR77 0082 9000 0949 1199 7416 17" readonly>
+                            <button class="copy-btn">Kopyala</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
